@@ -64,7 +64,7 @@ public class Node{
     //When called will print the structure of the tree
     public String getTree(int indent){
         String output = "-".repeat(indent);
-        output = output + valueString + "\n";
+        output = output + this.key + ": " + valueString + "\n";
 
         if(leftNode != null){
             output = output + leftNode.getTree(indent + 4);
@@ -75,24 +75,25 @@ public class Node{
         return output;
     }
     void add(int key,String valueString){
-        //Adds the key to the correct position in the binary search tree. If the key already exists do nothing.
-        if(this.key == key){
-            System.out.println("this key already exists");
+        //Adds the key to the correct position in the binary search tree. If the key already exists do nothing.System.out.println(this.valueString + this.key + " <---- Node class pair");
+       if(this.key == key){
+        return;
         }
-        if (key < this.key && leftNode == null){
-            leftNode.valueString = valueString;
+        if (key < this.key){
+            if(leftNode != null){
+                leftNode.add(key, valueString);
+            }
+            else{
+                leftNode = new Node(key, valueString);
+            }
         }
-        if (key < this.key && leftNode != null){
-            leftNode.add(key, valueString);
-        }
-        if (key > this.key && rightNode == null){
-            rightNode.valueString = valueString;
-        }
-        if (key > this.key && rightNode != null){
-            rightNode.add(key, valueString);
-        }
-        else{
-            System.out.println("error");
+        if (key > this.key){
+            if(rightNode != null){
+                rightNode.add(key, valueString);
+            }
+            else{
+                rightNode = new Node(key, valueString);
+            }
         }
 
     }

@@ -1,5 +1,6 @@
 public class BasicBinaryTree {
     private Node root;
+
     public BasicBinaryTree(){
     }
 
@@ -22,10 +23,17 @@ public class BasicBinaryTree {
     public String getTreettree(){
         return root.getTree(0);
     }
-    static void add(int key, String valueString){
-        Node currentNode = new Node(key, valueString);
-        currentNode.add(key, valueString);
-    }
+
+
+    void add(int key, String valueString){
+        if(root == null){
+        root = new Node(key, valueString);
+        
+    }else {
+        root.add(key, valueString);
+    }}
+
+
     String find(int key){
         String output = "";
         
